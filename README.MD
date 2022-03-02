@@ -52,21 +52,21 @@ _NOTE: If the apps are locally deployed use `localhost`. Otherwise, use the clus
 
 #### Currency Exchange Service
 - http://localhost:8000/exchange/from/USD/to/EUR
-- http://<cluster-external-ip>:8000/exchange/from/USD/to/EUR
+- http://cluster-external-ip:8000/exchange/from/USD/to/EUR
 
 
 #### Currency Conversion Service
 - http://localhost:8100/conversion/from/USD/to/EUR/quantity/10
-- http://<cluster-external-ip>:8100/conversion/from/USD/to/EUR/quantity/10
+- http://cluster-external-ip:8100/conversion/from/USD/to/EUR/quantity/10
 
 #### Health
-- http://<cluster-external-ip>:<port>/actuator/health/
-- http://<cluster-external-ip>:<port>/actuator/health/liveness
-- http://<cluster-external-ip>:<port>/actuator/health/readiness
+- http://cluster-external-ip:port/actuator/health/
+- http://cluster-external-ip:port/actuator/health/liveness
+- http://cluster-external-ip:port/actuator/health/readiness
 
 #### Commands
 
-The following commands were used in the development process. They may be useful.
+The following commands were used in the development process.
 
 ```
 gcloud container clusters get-credentials devmission-cluster --zone us-central1-c --project data-rush-341916
