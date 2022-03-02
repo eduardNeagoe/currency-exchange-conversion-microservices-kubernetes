@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2022-03-01T10:27:36Z"
+  generation: 1
+  labels:
+    app: currency-exchange
+  name: currency-exchange
+  namespace: default
+  resourceVersion: "2141"
+  uid: 9e3f38d2-532b-458c-8b79-a27d7f1232b5
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: currency-exchange
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: currency-exchange
+    spec:
+      containers:
+        - image: eduardn08/microservices-poc-currency-exchange-service:0.0.11-SNAPSHOT
+          imagePullPolicy: IfNotPresent
+          name: microservices-poc-currency-exchange-service
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+    - lastTransitionTime: "2022-03-01T10:27:47Z"
+      lastUpdateTime: "2022-03-01T10:27:47Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2022-03-01T10:27:36Z"
+      lastUpdateTime: "2022-03-01T10:27:47Z"
+      message: ReplicaSet "currency-exchange-5b84f5d494" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  creationTimestamp: "2022-03-01T10:27:44Z"
+  finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: currency-exchange
+  name: currency-exchange
+  namespace: default
+  resourceVersion: "2397"
+  uid: a677152a-9078-47b0-b649-ab3162a9ec0e
+spec:
+  clusterIP: 10.48.11.229
+  clusterIPs:
+    - 10.48.11.229
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - nodePort: 32480
+      port: 8000
+      protocol: TCP
+      targetPort: 8000
+  selector:
+    app: currency-exchange
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+      - ip: 34.123.247.173
