@@ -3,6 +3,7 @@
 _NOTE: If you're interested, Google Cloud Platform offers 300$ worth of cloud services for free when signing up. I used it to develop this app with GKE._
 
 ### Detailed tech stack:
+- Spring boot
 - Kubernetes for container orchestration
 - Spring Cloud OpenFeign (open-source successor of Netflix Feign) for inter-service communication and load balancing - between the currency and exchange services
 - Resilience4j (inspired by Netflix Hystrix) for mechanisms like retry, circuit breaker, rate limiter, bulkhead
@@ -11,6 +12,7 @@ _NOTE: If you're interested, Google Cloud Platform offers 300$ worth of cloud se
 - H2 Database for in-memory database
 - Lombok for logging and for eliminating boilerplate POJO coding
 - Mapstruct for mapping entities to DTOs and vice-versa
+- Maven as a build tool
 
 ## Purpose
 The purpose of this app is to demonstrate the use of the tech stack described above. It's focused on the
