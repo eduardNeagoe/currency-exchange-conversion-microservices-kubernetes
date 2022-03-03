@@ -1,5 +1,7 @@
 ## This is a microservice-based application built with Spring Boot and Kubernetes using Google Kubernetes Engine (GKE)
 
+This app is similar to https://github.com/eduardNeagoe/spring-cloud-microservices-poc, but it only englobes the currency-exchange and currency-conversion microservices. The Spring-Cloud features like load-balancing and distributed tracing are handled with the help of GKE in this case.
+
 _NOTE: If you're interested, Google Cloud Platform offers 300$ worth of cloud services for free when signing up. I used it to develop this app with GKE._
 
 ### Detailed tech stack:
